@@ -191,8 +191,8 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
 
         return new Color(
                 (brightness() < 0.5)
-                        ? config.separatorColor_ForClasses_DarkTheme
-                        : config.separatorColor_ForClasses_LightTheme);
+                        ? config.separatorColor_ForClasses_DarkThemeX
+                        : config.separatorColor_ForClasses_LightThemeX);
     }
 
     @SuppressWarnings("UseJBColor")
@@ -209,7 +209,7 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
 
         return new Color(
                 (brightness() < 0.5)
-                        ? config.separatorColor_ForTestGroupCalls_DarkTheme
+                        ? config.separatorColor_ForTestGroupCalls_DarkThemeX
                         : config.separatorColor_ForTestGroupCalls_LightTheme);
     }
 

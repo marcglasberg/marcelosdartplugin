@@ -10,8 +10,6 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
-
 @Service(Service.Level.PROJECT)
 @State(name = "MyPluginConfiguration", storages = {@Storage("marcelosdartplugin.xml")})
 public final class MarceloPluginConfiguration implements PersistentStateComponent<MarceloPluginConfiguration> {
@@ -22,10 +20,10 @@ public final class MarceloPluginConfiguration implements PersistentStateComponen
     public boolean ifShowsSeparators_ForClasses = true;
 
     @Property
-    public int separatorColor_ForClasses_LightTheme = Color.BLACK.getRGB();
+    public int separatorColor_ForClasses_LightThemeX = Gray._50.getRGB();
 
     @Property
-    public int separatorColor_ForClasses_DarkTheme = Color.WHITE.getRGB();
+    public int separatorColor_ForClasses_DarkThemeX = Gray._200.getRGB();
 
     // --------------
 
@@ -39,10 +37,10 @@ public final class MarceloPluginConfiguration implements PersistentStateComponen
     public int separatorColor_ForTestOrGroupCalls_DarkTheme = Gray._90.getRGB();
 
     @Property
-    public int separatorColor_ForTestGroupCalls_LightTheme = Color.BLACK.getRGB();
+    public int separatorColor_ForTestGroupCalls_LightTheme = Gray._50.getRGB();
 
     @Property
-    public int separatorColor_ForTestGroupCalls_DarkTheme = Color.WHITE.getRGB();
+    public int separatorColor_ForTestGroupCalls_DarkThemeX = Gray._200.getRGB();
 
     // --------------
 
