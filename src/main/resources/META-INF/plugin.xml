@@ -1,0 +1,76 @@
+<idea-plugin>
+    <id>dev.glasberg.marcelosdartplugin</id>
+    <name>Marcelo's Flutter and Dart Plugin</name>
+    <vendor email="marcglasberg@gmail.com" url="https://glasberg.dev/">Marcelo Glasberg</vendor>
+
+    <description><![CDATA[
+
+    <h2>Features</h2>
+
+    <p><b>1) Show Class Separators.</b> Draws horizontal line separators above <b>class and enum</b>
+    definitions in the Editor, similar to the native "Show Method Separator" setting, but applied
+    to classes instead. This enhances code readability, making it easier to distinguish where one
+    class ends and another begins.</p>
+
+    <p><b>2) Show Test and Test Group Separators.</b> Draws horizontal line separators above
+    <code>test()</code> and <code>group()</code> method calls in the Editor, for files that end in
+    <code>_test.dart</code>. That's similar to the native "Show Method Separator" setting, but
+    applied to tests instead. This enhances code readability, making it easier to distinguish where
+    one test or test group ends and another begins. This plugin is needed because tests are
+    function *calls*, not function *definitions*, which is why they don't have the native method
+    separators applied to them.</p>
+
+    <h2>Configuration</h2>
+
+    <p>To configure this plugin:
+    <ol>
+        <li>Open IntelliJ IDEA.</li>
+        <li>For Windows, go to <strong>File</strong> -> <strong>Settings</strong>
+        (or press <code>Ctrl+Alt+S</code>). For MacOS, go to <strong>IntelliJ IDEA</strong> -> <strong>Preferences</strong> (or press <code>Command+</code>).</li>
+        <li>In the Settings (or Preferences) window, on the left panel, click <strong>Marcelo's Dart and Flutter Plugin.</li>
+        <li>Configure the plugin, then click <strong>Apply</strong>, or <strong>OK</strong> to close the Settings (or Preferences) window.</li>
+    </ol>
+
+    <p>You may also turn on a related native setting called "Show Method Separator":
+    <ol>
+        <li>In the Settings (or Preferences) window, on the left panel, click to expand <strong>Editor</strong>.</li>
+        <li>Under <strong>Editor</strong>, click to expand <strong>General</strong>.</li>
+        <li>Under <strong>General</strong>, click on <strong>Appearance</strong>.</li>
+        <li>On the right panel, find the checkbox <strong>Show method separators</strong>.</li>
+    </ol>
+
+    </p>
+
+    <h2>Note:</h2>
+
+    <p>This plugin has my name on it, because:
+
+    1) It will provide support for the 15+ plugins that I've developed, which you can explore at
+    <a href="https://pub.dev/publishers/glasberg.dev/packages">https://pub.dev/publishers/glasberg.dev/packages</a>.
+
+    2) It will incorporate features that reflect my personal preferences for IDE functionalities.
+    While it may prioritize a specific approach and not always offer extensive customization
+    options, you will have the flexibility to disable any features that do not align with your
+    requirements.
+
+    Currently, this plugin only includes the ability to draw separators. However, I plan to
+    gradually enhance its capabilities in the future.</p>
+
+  ]]></description>
+
+    <depends>Dart</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+
+        <codeInsight.lineMarkerProvider language="Dart"
+                                        implementationClass="dev.glasberg.marcelosdartplugin.MarceloLineMarkerProvider"/>
+
+        <projectConfigurable
+                implementation="dev.glasberg.marcelosdartplugin.MarceloPluginConfigurable"/>
+
+    </extensions>
+
+
+</idea-plugin>
