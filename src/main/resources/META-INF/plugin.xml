@@ -12,6 +12,8 @@
     to classes instead. This enhances code readability, making it easier to distinguish where one
     class ends and another begins.</p>
 
+      <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Classes.jpg" width="1200">
+
     <p><b>2) Show Test and Test Group Separators.</b> Draws horizontal line separators above
     <code>test()</code> and <code>group()</code> method calls in the Editor, for files that end in
     <code>_test.dart</code>. That's similar to the native "Show Method Separator" setting, but
@@ -19,6 +21,8 @@
     one test or test group ends and another begins. This plugin is needed because tests are
     function *calls*, not function *definitions*, which is why they don't have the native method
     separators applied to them.</p>
+
+      <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Tests.jpg" width="1200">
 
     <h2>Configuration</h2>
 

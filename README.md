@@ -7,16 +7,7 @@ in the Editor, similar to the native "Show Method Separator" setting, but applie
 instead. This enhances code readability, making it easier to distinguish where one class ends and
 another begins.
 
-<div style="display: flex; align-items: center; justify-content: space-between;">
-<div></div>
-<div style="display: flex; align-items: center; justify-content: space-between;">  
-  <img src="classesWithoutThePlugin.jpg" width="300" alt="classesWithoutThePlugin.jpg">
-  <div style="width: 70px; text-align: center; font-size: 2em;">➜</div>
-  <img src="classesWithThePlugin.jpg" width="300" alt="classesWithThePlugin.jpg">  
-</div>
-<div></div>
-</div>
-
+<img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Classes.jpg" width="1200" alt="Plugin effect for classes">
 <p>&nbsp;</p>
 
 **2) Show Test and Test Group Separators.** Draws horizontal line separators above `test()`
@@ -26,15 +17,7 @@ readability, making it easier to distinguish where one test or test group ends a
 This plugin is needed because tests are function *calls*, not function *definitions*, which is why
 they don't have the native method separators applied to them.
 
-<div style="display: flex; align-items: center; justify-content: space-between;">
-<div></div>
-<div style="display: flex; align-items: center; justify-content: space-between;">  
-  <img src="testsWithoutThePlugin.jpg" width="300" alt="classesWithoutThePlugin.jpg">
-  <div style="width: 70px; text-align: center; font-size: 2em;">➜</div>
-  <img src="testsWithThePlugin.jpg" width="300" alt="classesWithThePlugin.jpg">  
-</div>
-<div></div>
-</div>
+<img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Tests.jpg" width="1200" alt="Plugin effect for tests">
 
 ## Configuration
 
