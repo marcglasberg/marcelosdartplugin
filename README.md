@@ -1,4 +1,4 @@
-# Marcelo's Dart and Flutter Plugin
+# Marcelo's Flutter/Dart Essentials
 
 ## Features
 
@@ -26,8 +26,8 @@ To configure this plugin:
 1. Open IntelliJ IDEA.
 2. For Windows, go to **File** -> **Settings** (or press `Ctrl+Alt+S`). For MacOS, go to **IntelliJ
    IDEA** -> **Preferences** (or press `Command+`).
-3. In the Settings (or Preferences) window, on the left panel, click **Marcelo's Dart and Flutter
-   Plugin**.
+3. In the Settings (or Preferences) window, on the left panel, click **Marcelo's Flutter/Dart
+   Essentials**.
 4. Configure the plugin, then click **Apply**, or **OK** to close the Settings (or Preferences)
    window.
 

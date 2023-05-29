@@ -21,7 +21,7 @@ public class MarceloPluginConfigurable implements Configurable {
     @NlsContexts.ConfigurableName
     @Override
     public String getDisplayName() {
-        return "Marcelo's Dart and Flutter Plugin";
+        return "Marcelo's Flutter/Dart Essentials";
     }
 
     @Nullable
