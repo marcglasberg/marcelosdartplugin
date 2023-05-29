@@ -12,7 +12,11 @@
     to classes instead. This enhances code readability, making it easier to distinguish where one
     class ends and another begins.</p>
 
-      <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Classes.jpg" width="1200">
+    &nbsp;<br>
+
+    <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Classes.jpg">
+
+    <br>
 
     <p><b>2) Show Test and Test Group Separators.</b> Draws horizontal line separators above
     <code>test()</code> and <code>group()</code> method calls in the Editor, for files that end in
@@ -22,7 +26,9 @@
     function *calls*, not function *definitions*, which is why they don't have the native method
     separators applied to them.</p>
 
-      <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Tests.jpg" width="1200">
+    &nbsp;<br>
+
+    <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Tests.jpg">
 
     <h2>Configuration</h2>
 
@@ -45,7 +51,7 @@
 
     </p>
 
-    <h2>Note:</h2>
+    <h2>Note</h2>
 
     <p>This plugin has my name on it, because:
 
@@ -59,6 +65,15 @@
 
     Currently, this plugin only includes the ability to draw separators. However, I plan to
     gradually enhance its capabilities in the future.</p>
+
+    <h2>Source Code</h2>
+
+    <p><a href="https://github.com/marcglasberg/marcelosdartplugin">https://github.com/marcglasberg/marcelosdartplugin</a></p>
+
+    <p>License: <a href="https://github.com/marcglasberg/marcelosdartplugin/raw/master/LICENSE.txt">Apache License - Version 2.0</a></p>
+
+<p>&nbsp;</p>
+
 
   ]]></description>
 
