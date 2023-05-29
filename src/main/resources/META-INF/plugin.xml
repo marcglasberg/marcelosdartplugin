@@ -2,6 +2,8 @@
     <id>dev.glasberg.marcelosdartplugin</id>
     <name>Marcelo's Flutter and Dart Plugin</name>
     <vendor email="marcglasberg@gmail.com" url="https://glasberg.dev/">Marcelo Glasberg</vendor>
+    <version>1.0</version>
+    <idea-version since-build="231.0"/>
 
     <description><![CDATA[
 
