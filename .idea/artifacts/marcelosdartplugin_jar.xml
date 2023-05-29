@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact name="marcelosdartplugin.jar">
+  <artifact name="marcelosdartplugin:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/marcelosdartplugin_jar</output-path>
     <root id="root">
-      <element id="archive" name="marcelosdartplugin.main.jar">
+      <element id="archive" name="marcelosdartplugin.jar">
         <element id="directory" name="META-INF">
           <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
           <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" />

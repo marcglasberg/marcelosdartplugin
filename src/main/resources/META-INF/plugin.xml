@@ -2,7 +2,7 @@
     <id>dev.glasberg.marcelosdartplugin</id>
     <name>Marcelo's Flutter/Dart Essentials</name>
     <vendor email="marcglasberg@gmail.com" url="https://glasberg.dev/">Marcelo Glasberg</vendor>
-    <version>1.0</version>
+    <version>1.2</version>
     <idea-version since-build="231.0"/>
 
     <description><![CDATA[
@@ -29,7 +29,7 @@
         <li>Open IntelliJ IDEA.</li>
         <li>For Windows, go to <strong>File</strong> -> <strong>Settings</strong>
         (or press <code>Ctrl+Alt+S</code>). For MacOS, go to <strong>IntelliJ IDEA</strong> -> <strong>Preferences</strong> (or press <code>Command+</code>).</li>
-        <li>In the Settings (or Preferences) window, on the left panel, click <strong>Marcelo's Flutter/Dart Essentials.</li>
+        <li>In the Settings (or Preferences) window, on the left panel, click <strong>Marcelo's Flutter/Dart Essentials</strong>.</li>
         <li>Configure the plugin, then click <strong>Apply</strong>, or <strong>OK</strong> to close the Settings (or Preferences) window.</li>
     </ol>
 
