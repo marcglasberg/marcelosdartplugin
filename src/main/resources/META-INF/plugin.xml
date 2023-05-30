@@ -33,17 +33,24 @@
         <li>Configure the plugin, then click <strong>Apply</strong>, or <strong>OK</strong> to close the Settings (or Preferences) window.</li>
     </ol>
 
-    <p>You may also turn on a related native setting called "Show Method Separator":
+    <p>Note: You may also turn on a related native setting called "Show Method Separator":
     <ol>
         <li>In the Settings (or Preferences) window, on the left panel, click to expand <strong>Editor</strong>.</li>
         <li>Under <strong>Editor</strong>, click to expand <strong>General</strong>.</li>
         <li>Under <strong>General</strong>, click on <strong>Appearance</strong>.</li>
         <li>On the right panel, find the checkbox <strong>Show method separators</strong>.</li>
     </ol>
-
     </p>
 
-    <h2>Note</h2>
+    <p>Note: To change the color of the native method separator, fo to File > Settings (On Mac, it's IntelliJ IDEA > Preferences).
+    In the Settings/Preferences dialog, go to Editor > Color Scheme.
+    In the Color Scheme section, you will find an option called General.
+    Expand the General option, you should find Code > Method separator.
+    The Method separator color option should be there.
+    You can click on it and a color dialog will open where you can pick a new color for the method separators.
+    </p>
+
+    <h2>Final Note</h2>
 
     <p>This plugin has my name on it, because:
 
