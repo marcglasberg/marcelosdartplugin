@@ -64,7 +64,7 @@ public class MarceloPluginConfigurationForm {
 
         @NlsContexts.Label
         JLabel explanation = new JLabel(
-                "Draws horizontal line separators above class and enum definitions.");
+                "Draws horizontal line separators above class, enum and extension definitions.");
         explanation.setForeground(UIManager.getColor("Label.disabledForeground"));
         mainPanel.add(explanation, constraints);
 

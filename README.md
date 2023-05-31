@@ -2,10 +2,10 @@
 
 ## Features
 
-**1) Show Class Separators.** Draws horizontal line separators above **class and enum** definitions
-in the Editor, similar to the native "Show Method Separator" setting, but applied to classes
-instead. This enhances code readability, making it easier to distinguish where one class ends and
-another begins.
+**1) Show Class Separators.** Draws horizontal line separators above **class, enum and extension**
+definitions in the Editor, similar to the native "Show Method Separator" setting, but applied to
+classes instead. This enhances code readability, making it easier to distinguish where one class
+ends and another begins.
 
 <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Classes.jpg" width="1200" alt="Plugin effect for classes">
 <p>&nbsp;</p>

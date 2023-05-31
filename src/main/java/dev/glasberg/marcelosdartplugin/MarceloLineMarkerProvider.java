@@ -47,13 +47,14 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
 
         // First we want to quickly eliminate most elements, for performance reasons.
 
-        boolean ifIsClassOrEnum = element instanceof DartClassDefinition ||
-                element instanceof DartEnumDefinition;
+        boolean ifIsClassOrSimilar = element instanceof DartClassDefinition ||
+                element instanceof DartEnumDefinition ||
+                element instanceof DartExtensionDeclaration;
 
         boolean ifIsCallExpression = element instanceof DartCallExpression;
 
         // If the element is not a markable element, we're done.
-        if (!ifIsClassOrEnum && !ifIsCallExpression) return null;
+        if (!ifIsClassOrSimilar && !ifIsCallExpression) return null;
 
         // ---
 
@@ -62,7 +63,7 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
         config = MarceloPluginConfiguration.getInstance(project);
 
         // If all separator settings are turned off, we're done.
-        if (ifIsClassOrEnum && !config.ifShowsSeparators_ForClasses) return null;
+        if (ifIsClassOrSimilar && !config.ifShowsSeparators_ForClasses) return null;
 
         // If all separator settings are turned off, we're done.
         if (ifIsCallExpression && !config.ifShowsSeparators_ForTestOrGroupCalls) return null;
@@ -70,8 +71,8 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
         // ---
 
         CallExpression callExpression;
-        if (ifIsClassOrEnum) {
-            // For class or enum declarations, just continue. We don't need any more checks.
+        if (ifIsClassOrSimilar) {
+            // Class, enum and extension declarations: just continue. We don't need any more checks.
             callExpression = null;
         }
         //
@@ -92,7 +93,7 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
         PsiElement markerLocationElement = getTheExactElementWhereTheMarkerWillBeAdded(element);
         if (markerLocationElement == null) return null;
 
-        var lineMarkerInfo = createLineMarkerInfo(markerLocationElement, ifIsClassOrEnum, callExpression);
+        var lineMarkerInfo = createLineMarkerInfo(markerLocationElement, ifIsClassOrSimilar, callExpression);
 
         return lineMarkerInfo;
     }
