@@ -51,3 +51,5 @@ This plugin has my name on it, because:
 
 Currently, this plugin only includes the ability to draw separators. However, I plan to gradually
 enhance its capabilities in the future.
+
+<img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginSettings.png" width="1200" alt="Plugin settings">
