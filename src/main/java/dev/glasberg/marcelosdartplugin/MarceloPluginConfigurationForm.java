@@ -6,6 +6,11 @@ import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class MarceloPluginConfigurationForm {
     private final JPanel mainPanel;
@@ -17,12 +22,18 @@ public class MarceloPluginConfigurationForm {
 
     // ---
 
-    private JCheckBox showSeparator_ForTestOrGroupCalls_CheckBox;
-    private ColorPanel separatorColor_ForTestOrGroupCalls_LightTheme_ColorPanel, separatorColor_ForTestOrGroupCalls_DarkTheme_ColorPanel;
+    private JCheckBox ifShowsSeparator_ForTestOrGroupCalls_CheckBox;
+    private ColorPanel separatorColor_ForTestCalls_LightTheme_ColorPanel, separatorColor_ForTestCalls_DarkTheme_ColorPanel;
+    private ColorPanel separatorColor_ForGroupCalls_LightTheme_ColorPanel, separatorColor_ForGroupCalls_DarkTheme_ColorPanel;
 
-    private ColorPanel separatorColor_ForTestGroupCalls_LightTheme_ColorPanel, separatorColor_ForTestGroupCalls_DarkTheme_ColorPanel;
+    // ---
 
-    public MarceloPluginConfigurationForm() {
+    private JCheckBox ifShowsSeparator_ForBdds_CheckBox;
+    private ColorPanel separatorColor_ForBddCalls_LightTheme_ColorPanel, separatorColor_ForBddCalls_DarkTheme_ColorPanel;
+    private ColorPanel separatorColor_ForBddKeywords_LightTheme_ColorPanel, separatorColor_ForBddKeywords_DarkTheme_ColorPanel;
+    private ColorPanel separatorColor_ForBddComments_LightTheme_ColorPanel, separatorColor_ForBddComments_DarkTheme_ColorPanel;
+
+    public MarceloPluginConfigurationForm(MarceloPluginConfigurable configurable) {
 
         mainPanel = new JPanel(new GridBagLayout());
 
@@ -33,6 +44,8 @@ public class MarceloPluginConfigurationForm {
 
         classesSeparator_Section(constraints);
         testAndGroupCallsSeparator_Section(constraints);
+        bddSeparator_Section(constraints);
+        resetToDefaults_Section(configurable, constraints);
 
         // ---
 
@@ -47,14 +60,15 @@ public class MarceloPluginConfigurationForm {
 
     private void classesSeparator_Section(GridBagConstraints constraints) {
 
-        ifShowsSeparator_ForClasses_CheckBox = new JCheckBox("Show");
+        ifShowsSeparator_ForClasses_CheckBox = new JCheckBox("Show separators");
         separatorColor_ForClasses_LightTheme_ColorPanel = new ColorPanel();
         separatorColor_ForClasses_DarkTheme_ColorPanel = new ColorPanel();
+        var disabledColor = UIManager.getColor("Label.disabledForeground");
 
         // ---
 
         constraints.gridy++;
-        constraints.insets = JBUI.emptyInsets(); // 5px below each component.
+        constraints.insets = JBUI.emptyInsets();
         mainPanel.add(sectionLabel("Class separator", true), constraints);
 
         // ---
@@ -65,7 +79,7 @@ public class MarceloPluginConfigurationForm {
         @NlsContexts.Label
         JLabel explanation = new JLabel(
                 "Draws horizontal line separators above class, enum and extension definitions.");
-        explanation.setForeground(UIManager.getColor("Label.disabledForeground"));
+        explanation.setForeground(disabledColor);
         mainPanel.add(explanation, constraints);
 
         // ---
@@ -77,17 +91,17 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Separator color for <b>classes</b>, <b>light</b> themes:</html>"));
+        panel.add(new JLabel("<html>Color for <b>classes</b>. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForClasses_LightTheme_ColorPanel);
 
         constraints.gridy++;
-        constraints.insets = JBUI.insetsLeft(20);
+        constraints.insets = JBUI.insets(0, 20, -12, 0);//
         mainPanel.add(panel, constraints);
 
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Separator color for <b>classes</b>, <b>dark</b> themes:</html>"));
+        panel.add(new JLabel("<html>Color for <b>classes</b>. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForClasses_DarkTheme_ColorPanel);
 
         constraints.gridy++;
@@ -97,38 +111,56 @@ public class MarceloPluginConfigurationForm {
 
     private void testAndGroupCallsSeparator_Section(GridBagConstraints constraints) {
 
-        showSeparator_ForTestOrGroupCalls_CheckBox = new JCheckBox("Show");
-        separatorColor_ForTestOrGroupCalls_LightTheme_ColorPanel = new ColorPanel();
-        separatorColor_ForTestOrGroupCalls_DarkTheme_ColorPanel = new ColorPanel();
-        separatorColor_ForTestGroupCalls_LightTheme_ColorPanel = new ColorPanel();
-        separatorColor_ForTestGroupCalls_DarkTheme_ColorPanel = new ColorPanel();
+        ifShowsSeparator_ForTestOrGroupCalls_CheckBox = new JCheckBox("Show separators");
+        separatorColor_ForTestCalls_LightTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForTestCalls_DarkTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForGroupCalls_LightTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForGroupCalls_DarkTheme_ColorPanel = new ColorPanel();
+        var disabledColor = UIManager.getColor("Label.disabledForeground");
 
         // ---
 
         constraints.gridy++;
-        constraints.insets = JBUI.emptyInsets(); // 5px below each component.
+        constraints.insets = JBUI.emptyInsets();
         mainPanel.add(sectionLabel("Test separator"), constraints);
 
         // ---
 
         constraints.gridy++;
-        constraints.insets = JBUI.insets(0, 20, 15, 40);
-        JLabel explanation = new JLabel(
+        constraints.insets = JBUI.insets(0, 20, 5, 40);
+        JLabel explanation1 = new JLabel(
                 "Draws horizontal line separators above each test and test-group in a test file.");
-        explanation.setForeground(UIManager.getColor("Label.disabledForeground"));
-        mainPanel.add(explanation, constraints);
+        explanation1.setForeground(disabledColor);
+        mainPanel.add(explanation1, constraints);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(0, 20, 15, 40);
+        JLabel explanation2 = new JLabel("And also for the set up and tear down methods.");
+        explanation2.setForeground(disabledColor);
+        mainPanel.add(explanation2, constraints);
+
 
         // ---
 
         constraints.gridy++;
         constraints.insets = JBUI.insets(0, 20, 10, 0);
-        mainPanel.add(showSeparator_ForTestOrGroupCalls_CheckBox, constraints);
+        mainPanel.add(ifShowsSeparator_ForTestOrGroupCalls_CheckBox, constraints);
 
         // ---
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Separator color for <b>test()</b> calls, <b>light</b> themes:</html>"));
-        panel.add(separatorColor_ForTestOrGroupCalls_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html>Color for <b>test()</b> calls. <b>Light</b> themes:</html>"));
+        panel.add(separatorColor_ForTestCalls_LightTheme_ColorPanel);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(0, 20, -12, 0);//
+        mainPanel.add(panel, constraints);
+
+        // ---
+
+        panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(new JLabel("<html>Color for <b>test()</b> calls. <b>Dark</b> themes:</html>"));
+        panel.add(separatorColor_ForTestCalls_DarkTheme_ColorPanel);
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
@@ -137,8 +169,111 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Separator color for <b>test()</b> calls, <b>dark</b> themes:</html>"));
-        panel.add(separatorColor_ForTestOrGroupCalls_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html>Color for <b>group()</b> calls. <b>Light</b> themes:</html>"));
+        panel.add(separatorColor_ForGroupCalls_LightTheme_ColorPanel);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(10, 20, -12, 0);//
+        mainPanel.add(panel, constraints);
+
+        // ---
+
+        panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(new JLabel("<html>Color for <b>group()</b> calls. <b>Dark</b> themes:</html>"));
+        panel.add(separatorColor_ForGroupCalls_DarkTheme_ColorPanel);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insetsLeft(20);
+        mainPanel.add(panel, constraints);
+    }
+
+    private void bddSeparator_Section(GridBagConstraints constraints) {
+
+        ifShowsSeparator_ForBdds_CheckBox = new JCheckBox("Show separators");
+        separatorColor_ForBddCalls_LightTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForBddCalls_DarkTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForBddKeywords_LightTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForBddKeywords_DarkTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForBddComments_LightTheme_ColorPanel = new ColorPanel();
+        separatorColor_ForBddComments_DarkTheme_ColorPanel = new ColorPanel();
+        var disabledColor = UIManager.getColor("Label.disabledForeground");
+
+        // ---
+
+        constraints.gridy++;
+        constraints.insets = JBUI.emptyInsets();
+        mainPanel.add(sectionLabel("Bdd separator"), constraints);
+
+        // ---
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(0, 20, 20, 40);
+        JLabel explanation = new JLabel(
+                "<html>This is for the <b>BDD Framework</b> package: <a href='https://pub.dev/packages/bdd_framework'>pub.dev/packages/bdd_framework</a></html>");
+        explanation.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        explanation.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e1) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://pub.dev/packages/bdd_framework"));
+                } catch (IOException | URISyntaxException e2) {
+                    e2.printStackTrace();
+                }
+            }
+        });
+        mainPanel.add(explanation, constraints);
+
+        // ---
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(0, 20, 5, 40);
+        JLabel explanation1 = new JLabel(
+                "Draws horizontal line separators above each Bdd in a test file.");
+        JLabel explanation2 = new JLabel(
+                "<html>And also between Bdd keywords: " +
+                        "<b>.given(...)</b> " +
+                        "| <b>.when(...)</b> " +
+                        "| <b>.then(...)</b> " +
+                        "| <b>.example(...)</b>" +
+                        "</html>");
+        JLabel explanation3 = new JLabel(
+                "<html>And also for comments that start with: " +
+                        "<b>// Given:</b> " +
+                        "| <b>// When:</b> " +
+                        "| <b>// Then:</b> " +
+                        "| <b>// When/Then:</b>" +
+                        "</html>");
+        explanation1.setForeground(disabledColor);
+        explanation2.setForeground(disabledColor);
+        explanation3.setForeground(disabledColor);
+        mainPanel.add(explanation1, constraints);
+        constraints.gridy++;
+        mainPanel.add(explanation2, constraints);
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(0, 20, 25, 40);
+        mainPanel.add(explanation3, constraints);
+
+        // ---
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(0, 20, 10, 0);
+        mainPanel.add(ifShowsSeparator_ForBdds_CheckBox, constraints);
+
+        // ---
+
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(new JLabel("<html>Color for <b>Bdd()</b> calls. <b>Light</b> themes:</html>"));
+        panel.add(separatorColor_ForBddCalls_LightTheme_ColorPanel);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(0, 20, -12, 0);//
+        mainPanel.add(panel, constraints);
+
+        // ---
+
+        panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(new JLabel("<html>Color for <b>Bdd()</b> calls. <b>Dark</b> themes:</html>"));
+        panel.add(separatorColor_ForBddCalls_DarkTheme_ColorPanel);
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
@@ -147,21 +282,57 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Separator color for <b>group()</b> calls, <b>light</b> themes:</html>"));
-        panel.add(separatorColor_ForTestGroupCalls_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html>Color for <b>given</b> | <b>when</b> | <b>then</b> | <b>example</b> keywords. <b>Light</b> themes:</html>"));
+        panel.add(separatorColor_ForBddKeywords_LightTheme_ColorPanel);
 
         constraints.gridy++;
-        constraints.insets = JBUI.insets(20, 20, 0, 0);
+        constraints.insets = JBUI.insets(10, 20, -12, 0);//
         mainPanel.add(panel, constraints);
 
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Separator color for <b>group()</b> calls, <b>dark</b> themes:</html>"));
-        panel.add(separatorColor_ForTestGroupCalls_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html>Color for <b>given</b> | <b>when</b> | <b>then</b> | <b>example</b> keywords. <b>Dark</b> themes:</html>"));
+        panel.add(separatorColor_ForBddKeywords_DarkTheme_ColorPanel);
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
+        mainPanel.add(panel, constraints);
+
+        // ---
+
+        panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>When/Then:</b> comments. <b>Light</b> themes:</html>"));
+        panel.add(separatorColor_ForBddComments_LightTheme_ColorPanel);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insets(10, 20, -12, 0);//
+        mainPanel.add(panel, constraints);
+
+        // ---
+
+        panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>When/Then:</b> comments. <b>Dark</b> themes:</html>"));
+        panel.add(separatorColor_ForBddComments_DarkTheme_ColorPanel);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.insetsLeft(20);
+        mainPanel.add(panel, constraints);
+    }
+
+    private void resetToDefaults_Section(MarceloPluginConfigurable configurable, GridBagConstraints constraints) {
+
+        constraints.gridy++;
+        constraints.insets = JBUI.emptyInsets();
+        mainPanel.add(sectionLabel(""), constraints);
+
+        constraints.gridy++;
+        constraints.insets = JBUI.emptyInsets();
+        var panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton resetButton = new JButton("Reset to defaults");
+        resetButton.addActionListener(e -> configurable.resetToDefaults());
+
+        panel.add(resetButton);
         mainPanel.add(panel, constraints);
     }
 
@@ -221,44 +392,100 @@ public class MarceloPluginConfigurationForm {
         this.separatorColor_ForClasses_DarkTheme_ColorPanel.setSelectedColor(color);
     }
 
-    public boolean get_ShowSeparator_ForTests_CheckBox() {
-        return showSeparator_ForTestOrGroupCalls_CheckBox.isSelected();
+    public boolean get_IfShowsSeparator_ForTests_CheckBox() {
+        return ifShowsSeparator_ForTestOrGroupCalls_CheckBox.isSelected();
     }
 
-    public void set_ShowSeparator_ForTestOrGroupCalls_CheckBox(boolean showSeparators) {
-        this.showSeparator_ForTestOrGroupCalls_CheckBox.setSelected(showSeparators);
+    public void set_IfShowsSeparator_ForTests_CheckBox(boolean showSeparators) {
+        this.ifShowsSeparator_ForTestOrGroupCalls_CheckBox.setSelected(showSeparators);
     }
 
-    public Color get_SeparatorColor_ForTestOrGroupCalls_LightTheme_ColorPanel() {
-        return separatorColor_ForTestOrGroupCalls_LightTheme_ColorPanel.getSelectedColor();
+    public Color get_SeparatorColor_ForTestCalls_LightTheme_ColorPanel() {
+        return separatorColor_ForTestCalls_LightTheme_ColorPanel.getSelectedColor();
     }
 
-    public void set_SeparatorColor_ForTestOrGroupCalls_LightTheme_ColorPanel(Color color) {
-        this.separatorColor_ForTestOrGroupCalls_LightTheme_ColorPanel.setSelectedColor(color);
+    public void set_SeparatorColor_ForTestCalls_LightTheme_ColorPanel(Color color) {
+        this.separatorColor_ForTestCalls_LightTheme_ColorPanel.setSelectedColor(color);
     }
 
-    public Color get_SeparatorColor_ForTestOrGroupCalls_DarkTheme_ColorPanel() {
-        return separatorColor_ForTestOrGroupCalls_DarkTheme_ColorPanel.getSelectedColor();
+    public Color get_SeparatorColor_ForTestCalls_DarkTheme_ColorPanel() {
+        return separatorColor_ForTestCalls_DarkTheme_ColorPanel.getSelectedColor();
     }
 
-    public void set_SeparatorColor_ForTestOrGroupCalls_DarkTheme_ColorPanel(Color color) {
-        this.separatorColor_ForTestOrGroupCalls_DarkTheme_ColorPanel.setSelectedColor(color);
+    public void set_SeparatorColor_ForTestCalls_DarkTheme_ColorPanel(Color color) {
+        this.separatorColor_ForTestCalls_DarkTheme_ColorPanel.setSelectedColor(color);
     }
 
-    public Color get_SeparatorColor_ForTestGroupCalls_LightTheme_ColorPanel() {
-        return separatorColor_ForTestGroupCalls_LightTheme_ColorPanel.getSelectedColor();
+    public Color get_SeparatorColor_ForGroupCalls_LightTheme_ColorPanel() {
+        return separatorColor_ForGroupCalls_LightTheme_ColorPanel.getSelectedColor();
     }
 
-    public void set_SeparatorColor_ForTestGroupCalls_LightTheme_ColorPanel(Color color) {
-        this.separatorColor_ForTestGroupCalls_LightTheme_ColorPanel.setSelectedColor(color);
+    public void set_SeparatorColor_ForGroupCalls_LightTheme_ColorPanel(Color color) {
+        this.separatorColor_ForGroupCalls_LightTheme_ColorPanel.setSelectedColor(color);
     }
 
-    public Color get_SeparatorColor_ForTestGroupCalls_DarkTheme_ColorPanel() {
-        return separatorColor_ForTestGroupCalls_DarkTheme_ColorPanel.getSelectedColor();
+    public Color get_SeparatorColor_ForGroupCalls_DarkTheme_ColorPanel() {
+        return separatorColor_ForGroupCalls_DarkTheme_ColorPanel.getSelectedColor();
     }
 
-    public void set_SeparatorColor_ForTestGroupCalls_DarkTheme_ColorPanel(Color color) {
-        this.separatorColor_ForTestGroupCalls_DarkTheme_ColorPanel.setSelectedColor(color);
+    public void set_SeparatorColor_ForGroupCalls_DarkTheme_ColorPanel(Color color) {
+        this.separatorColor_ForGroupCalls_DarkTheme_ColorPanel.setSelectedColor(color);
+    }
+
+    public boolean get_IfShowsSeparator_ForBdds_CheckBox() {
+        return ifShowsSeparator_ForBdds_CheckBox.isSelected();
+    }
+
+    public void set_IfShowsSeparator_ForBdds_CheckBox(boolean showSeparators) {
+        this.ifShowsSeparator_ForBdds_CheckBox.setSelected(showSeparators);
+    }
+
+    public Color get_SeparatorColor_ForBddCalls_LightTheme_ColorPanel() {
+        return separatorColor_ForBddCalls_LightTheme_ColorPanel.getSelectedColor();
+    }
+
+    public void set_SeparatorColor_ForBddCalls_LightTheme_ColorPanel(Color color) {
+        this.separatorColor_ForBddCalls_LightTheme_ColorPanel.setSelectedColor(color);
+    }
+
+    public Color get_SeparatorColor_ForBddCalls_DarkTheme_ColorPanel() {
+        return separatorColor_ForBddCalls_DarkTheme_ColorPanel.getSelectedColor();
+    }
+
+    public void set_SeparatorColor_ForBddCalls_DarkTheme_ColorPanel(Color color) {
+        this.separatorColor_ForBddCalls_DarkTheme_ColorPanel.setSelectedColor(color);
+    }
+
+    public Color get_SeparatorColor_ForBddKeywords_LightTheme_ColorPanel() {
+        return separatorColor_ForBddKeywords_LightTheme_ColorPanel.getSelectedColor();
+    }
+
+    public void set_SeparatorColor_ForBddKeywords_LightTheme_ColorPanel(Color color) {
+        this.separatorColor_ForBddKeywords_LightTheme_ColorPanel.setSelectedColor(color);
+    }
+
+    public Color get_SeparatorColor_ForBddKeywords_DarkTheme_ColorPanel() {
+        return separatorColor_ForBddKeywords_DarkTheme_ColorPanel.getSelectedColor();
+    }
+
+    public void set_SeparatorColor_ForBddKeywords_DarkTheme_ColorPanel(Color color) {
+        this.separatorColor_ForBddKeywords_DarkTheme_ColorPanel.setSelectedColor(color);
+    }
+
+    public Color get_SeparatorColor_ForBddComments_LightTheme_ColorPanel() {
+        return separatorColor_ForBddComments_LightTheme_ColorPanel.getSelectedColor();
+    }
+
+    public void set_SeparatorColor_ForBddComments_LightTheme_ColorPanel(Color color) {
+        this.separatorColor_ForBddComments_LightTheme_ColorPanel.setSelectedColor(color);
+    }
+
+    public Color get_SeparatorColor_ForBddComments_DarkTheme_ColorPanel() {
+        return separatorColor_ForBddComments_DarkTheme_ColorPanel.getSelectedColor();
+    }
+
+    public void set_SeparatorColor_ForBddComments_DarkTheme_ColorPanel(Color color) {
+        this.separatorColor_ForBddComments_DarkTheme_ColorPanel.setSelectedColor(color);
     }
 }
 
