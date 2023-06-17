@@ -29,7 +29,7 @@
     and <code>.example(...)</code>. Also, in the BDD body you may want to separate the
     implementation of the given/when/then parts. To that end, it will also add separators above
     any comments that start with <code>// Given:</code>, <code>// When:</code>, <code>// Then:</code>,
-    <code>// Given/When:</code> or <code>// When/Then:</code></p>. Note all these separators
+    <code>// Given/When:</code> or <code>// When/Then:</code>. Note all these separators
     are only added for files with names that start with "bdd_" or end with "_test.dart".
 
     <h2>Configuration</h2>
