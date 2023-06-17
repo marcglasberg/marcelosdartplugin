@@ -284,8 +284,8 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
         if (!ifIsTestFile) return null;
 
         String text = psiComment.getText();
-        if (text.startsWith("// Given:") || text.startsWith("// When:") ||
-                text.startsWith("// Then:") || text.startsWith("// When/Then:")) {
+        if (text.startsWith("// Given:") || text.startsWith("// When:") || text.startsWith("// Then:") ||
+                text.startsWith("// Given/When:") || text.startsWith("// When/Then:")) {
 
             var info = new LineMarkerInfo<PsiElement>(psiComment, psiComment.getTextRange());
             info.separatorPlacement = SeparatorPlacement.TOP; // Line above the code.

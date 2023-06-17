@@ -19,6 +19,16 @@ they don't have the native method separators applied to them.
 
 <img src="https://github.com/marcglasberg/marcelosdartplugin/raw/master/PluginEffect_Tests.jpg" width="1200" alt="Plugin effect for tests">
 
+**3) Show Bdd Separators.** This is for the <b>BDD Framework</b> package:
+<a href='https://pub.dev/packages/bdd_framework'>pub.dev/packages/bdd_framework</a></html>.
+Draws horizontal line separators above `Bdd()` calls, but also between the BDD
+keywords: `.given(...)`, `.when(...)`, `.then(...)`
+and `.example(...)()`. Also, in the BDD body you may want to separate the
+implementation of the given/then/when parts. To that end, it will also add separators above
+any comments that start with `// Given:`, `// When:`, `// Then:`,
+`// Given/When:` or `// When/Then:` or</p>. Note all these separators
+are only added for files with names that start with "bdd_" or end with "_test.dart".
+
 ## Configuration
 
 To configure this plugin:

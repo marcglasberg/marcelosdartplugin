@@ -42,6 +42,7 @@ public class MarceloPluginConfigurationForm {
         constraints.weightx = 1.0;
         constraints.gridy = -1;
 
+        // Sections:
         classesSeparator_Section(constraints);
         testAndGroupCallsSeparator_Section(constraints);
         bddSeparator_Section(constraints);
@@ -241,6 +242,7 @@ public class MarceloPluginConfigurationForm {
                         "<b>// Given:</b> " +
                         "| <b>// When:</b> " +
                         "| <b>// Then:</b> " +
+                        "| <b>// Given/When:</b>" +
                         "| <b>// When/Then:</b>" +
                         "</html>");
         explanation1.setForeground(disabledColor);
@@ -302,7 +304,7 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>When/Then:</b> comments. <b>Light</b> themes:</html>"));
+        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>Given/When: | <b>When/Then:</b> comments. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForBddComments_LightTheme_ColorPanel);
 
         constraints.gridy++;
@@ -312,7 +314,7 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>When/Then:</b> comments. <b>Dark</b> themes:</html>"));
+        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>Given/When: | <b>When/Then:</b> comments. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForBddComments_DarkTheme_ColorPanel);
 
         constraints.gridy++;

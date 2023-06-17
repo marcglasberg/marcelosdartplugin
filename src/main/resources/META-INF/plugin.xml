@@ -22,6 +22,16 @@
     function *calls*, not function *definitions*, which is why they don't have the native method
     separators applied to them.</p>
 
+    <p><b>3) Show Bdd Separators.</b> This is for the <b>BDD Framework</b> package:
+    <a href='https://pub.dev/packages/bdd_framework'>pub.dev/packages/bdd_framework</a></html>.
+    Draws horizontal line separators above <code>Bdd()</code> calls, but also between the BDD
+    keywords: <code>.given(...)</code>, <code>.when(...)</code>, <code>.then(...)</code>
+    and <code>.example(...)</code>. Also, in the BDD body you may want to separate the
+    implementation of the given/then/when parts. To that end, it will also add separators above
+    any comments that start with <code>// Given:</code>, <code>// When:</code>, <code>// Then:</code>,
+    <code>// Given/When:</code> or <code>// When/Then:</code> or</p>. Note all these separators
+    are only added for files with names that start with "bdd_" or end with "_test.dart".
+
     <h2>Configuration</h2>
 
     <p>To configure this plugin:
