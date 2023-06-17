@@ -24,9 +24,9 @@ they don't have the native method separators applied to them.
 Draws horizontal line separators above `Bdd()` calls, but also between the BDD
 keywords: `.given(...)`, `.when(...)`, `.then(...)`
 and `.example(...)()`. Also, in the BDD body you may want to separate the
-implementation of the given/then/when parts. To that end, it will also add separators above
+implementation of the given/when/then parts. To that end, it will also add separators above
 any comments that start with `// Given:`, `// When:`, `// Then:`,
-`// Given/When:` or `// When/Then:` or</p>. Note all these separators
+`// Given/When:` or `// When/Then:`</p>. Note all these separators
 are only added for files with names that start with "bdd_" or end with "_test.dart".
 
 ## Configuration
