@@ -92,8 +92,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>classes</b>. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForClasses_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Light</b> theme color for <b>classes</b>.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insets(0, 20, -12, 0);//
@@ -102,8 +102,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>classes</b>. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForClasses_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Dark</b> theme color for <b>classes</b>.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
@@ -150,8 +150,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>test()</b> calls. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForTestCalls_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Light</b> theme color for <b>test()</b> calls.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insets(0, 20, -12, 0);//
@@ -160,8 +160,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>test()</b> calls. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForTestCalls_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Dark</b> theme color for <b>test()</b> calls.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
@@ -170,8 +170,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>group()</b> calls. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForGroupCalls_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Light</b> theme color for <b>group()</b> calls.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insets(10, 20, -12, 0);//
@@ -180,8 +180,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>group()</b> calls. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForGroupCalls_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Dark</b> theme color for <b>group()</b> calls.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
@@ -242,7 +242,7 @@ public class MarceloPluginConfigurationForm {
                         "<b>// Given:</b> " +
                         "| <b>// When:</b> " +
                         "| <b>// Then:</b> " +
-                        "| <b>// Given/When:</b>" +
+                        "| <b>// Given/When:</b> " +
                         "| <b>// When/Then:</b>" +
                         "</html>");
         explanation1.setForeground(disabledColor);
@@ -264,8 +264,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>Bdd()</b> calls. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForBddCalls_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Light</b> theme color for <b>Bdd()</b> calls.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insets(0, 20, -12, 0);//
@@ -274,8 +274,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>Bdd()</b> calls. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForBddCalls_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Dark</b> theme color for <b>Bdd()</b> calls.</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
@@ -284,8 +284,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>given</b> | <b>when</b> | <b>then</b> | <b>example</b> keywords. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForBddKeywords_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Light</b> theme color for BDD keywords: <b>given</b> | <b>when</b> | <b>then</b> | <b>example</b> |</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insets(10, 20, -12, 0);//
@@ -294,8 +294,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>given</b> | <b>when</b> | <b>then</b> | <b>example</b> keywords. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForBddKeywords_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Dark</b> theme color for BDD keywords: <b>given</b> | <b>when</b> | <b>then</b> | <b>example</b> |</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
@@ -304,8 +304,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>Given/When: | <b>When/Then:</b> comments. <b>Light</b> themes:</html>"));
         panel.add(separatorColor_ForBddComments_LightTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Light</b> theme color for comments: <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>Given/When:</b> | <b>When/Then:</b> |</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insets(10, 20, -12, 0);//
@@ -314,8 +314,8 @@ public class MarceloPluginConfigurationForm {
         // ---
 
         panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panel.add(new JLabel("<html>Color for <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>Given/When: | <b>When/Then:</b> comments. <b>Dark</b> themes:</html>"));
         panel.add(separatorColor_ForBddComments_DarkTheme_ColorPanel);
+        panel.add(new JLabel("<html><b>Dark</b> theme color for comments: <b>Given:</b> | <b>When:</b> | <b>Then:</b> | <b>Given/When:</b> | <b>When/Then:</b> |</html>"));
 
         constraints.gridy++;
         constraints.insets = JBUI.insetsLeft(20);
