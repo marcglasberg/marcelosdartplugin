@@ -2,8 +2,13 @@
     <id>dev.glasberg.marcelosdartplugin</id>
     <name>Marcelo's Flutter/Dart Essentials</name>
     <vendor email="marcglasberg@gmail.com" url="https://glasberg.dev/">Marcelo Glasberg</vendor>
-    <version>2.0</version>
-    <idea-version since-build="231.0"/>
+    <version>2.1</version>
+
+    # Go to the About dialog in both IntelliJ IDEA and Android Studio, and copy the smaller version
+    # between them. That's usually the Android Studio one.
+    # See: https://plugins.jetbrains.com/docs/intellij/android-studio.html
+    # Also, see instructions in file `How To Update This Plugin.txt`
+    <idea-version since-build="201.0"/>
 
     <description><![CDATA[
 
@@ -112,6 +117,5 @@
                 implementation="dev.glasberg.marcelosdartplugin.MarceloPluginConfigurable"/>
 
     </extensions>
-
 
 </idea-plugin>
