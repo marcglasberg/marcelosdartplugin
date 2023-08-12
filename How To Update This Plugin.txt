@@ -2,7 +2,7 @@ How to Update this plugin
 =========================
 
 1) Make sure to update the plugin version, since you can't upload a plugin with the same version.
-   To that end, in the plugin.xml file, change the `<version>2.1</version>` to a new one.
+   To that end, in the plugin.xml file, change the `<version>2.2</version>` to a new one.
 2) Delete the file in: C:\Users\....\marcelosdartplugin\out\artifacts\marcelosdartplugin_jar
 3) In IntelliJ > Build > Rebuild Project
 4) In IntelliJ > Build > Build Artifacts > Build

@@ -2,13 +2,18 @@
     <id>dev.glasberg.marcelosdartplugin</id>
     <name>Marcelo's Flutter/Dart Essentials</name>
     <vendor email="marcglasberg@gmail.com" url="https://glasberg.dev/">Marcelo Glasberg</vendor>
-    <version>2.1</version>
+    <version>2.2</version>
 
     # Go to the About dialog in both IntelliJ IDEA and Android Studio, and copy the smaller version
     # between them. That's usually the Android Studio one.
     # See: https://plugins.jetbrains.com/docs/intellij/android-studio.html
     # Also, see instructions in file `How To Update This Plugin.txt`
-    <idea-version since-build="201.0"/>
+    # Then, upload the plugin and check the lower version it's actually compatible with.
+    # I got:
+    # - IntelliJ IDEA Ultimate IU-203.8084.24 (2020.3.4) Compatible
+    # - IntelliJ IDEA Ultimate IU-202.8194.7 (2020.2.4)5 compatibility problems
+    # - IntelliJ IDEA Ultimate IU-201.8743.12 (2020.1.4)5 compatibility problems
+    <idea-version since-build="203.8084"/>
 
     <description><![CDATA[
 
