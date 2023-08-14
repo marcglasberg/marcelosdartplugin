@@ -16,7 +16,7 @@ public class MarceloPluginConfigurable implements Configurable {
     private final MarceloPluginConfiguration config;
 
     public MarceloPluginConfigurable(Project project) {
-        config = MarceloPluginConfiguration.getInstance(project);
+        config = MarceloPluginConfiguration.getInstance();
     }
 
     public void resetToDefaults() {

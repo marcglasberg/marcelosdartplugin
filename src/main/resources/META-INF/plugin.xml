@@ -2,7 +2,7 @@
     <id>dev.glasberg.marcelosdartplugin</id>
     <name>Marcelo's Flutter/Dart Essentials</name>
     <vendor email="marcglasberg@gmail.com" url="https://glasberg.dev/">Marcelo Glasberg</vendor>
-    <version>2.2</version>
+    <version>2.3</version>
 
     # Go to the About dialog in both IntelliJ IDEA and Android Studio, and copy the smaller version
     # between them. That's usually the Android Studio one.
@@ -106,6 +106,20 @@
     <h2>Version 2.0</h2>
     <ul>
       <li>Show Bdd Separators</li>
+    </ul>
+
+    <h2>Version 2.2</h2>
+    <ul>
+      <li>The plugin will now work for IDE versions 203.8084 and up.
+      This includes the current stable version of IntelliJ IDEA (as of Aug 2023).
+      It also includes Android Studio Hedgehog (see https://developer.android.com/studio/preview),
+      but not Android Studio Giraffe (the current stable version as of Aug 2023).
+      </li>
+    </ul>
+
+    <h2>Version 2.3</h2>
+    <ul>
+      <li>Settings are now IDE-wide, instead of per Project</li>
     </ul>
     ]]></change-notes>
 

@@ -1,16 +1,16 @@
 package dev.glasberg.marcelosdartplugin;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.project.Project;
 import com.intellij.ui.Gray;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NotNull;
 
-@Service(Service.Level.PROJECT)
+@Service(Service.Level.APP)
 @State(name = "MyPluginConfiguration", storages = {@Storage("marcelosdartplugin.xml")})
 public final class MarceloPluginConfiguration implements PersistentStateComponent<MarceloPluginConfiguration> {
 
@@ -94,8 +94,8 @@ public final class MarceloPluginConfiguration implements PersistentStateComponen
 
     // --------------
 
-    public static MarceloPluginConfiguration getInstance(Project project) {
-        return project.getService(MarceloPluginConfiguration.class);
+    public static MarceloPluginConfiguration getInstance() {
+        return ApplicationManager.getApplication().getService(MarceloPluginConfiguration.class);
     }
 
     @NotNull

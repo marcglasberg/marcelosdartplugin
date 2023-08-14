@@ -79,7 +79,7 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
 
             // Get the configuration containing the information set by the user in the Settings page.
             Project project = dre.getProject();
-            config = MarceloPluginConfiguration.getInstance(project);
+            config = MarceloPluginConfiguration.getInstance();
 
             // If the separator setting is turned off, we're done.
             if (!config.ifShowsSeparator_ForBdds) return null;
@@ -215,7 +215,7 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
 
         // Get the configuration containing the information set by the user in the Settings page.
         Project project = element.getProject();
-        config = MarceloPluginConfiguration.getInstance(project);
+        config = MarceloPluginConfiguration.getInstance();
 
         // If the separator setting is turned off, we're done.
         if (!config.ifShowsSeparator_ForClasses) return null;
@@ -234,7 +234,7 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
 
         // Get the configuration containing the information set by the user in the Settings page.
         Project project = callExpression.getProject();
-        config = MarceloPluginConfiguration.getInstance(project);
+        config = MarceloPluginConfiguration.getInstance();
 
         // If the separator setting is turned off, we're done.
         if (!config.ifShowsSeparator_ForTests) return null;
@@ -274,7 +274,7 @@ public class MarceloLineMarkerProvider implements LineMarkerProvider {
 
         // Get the configuration containing the information set by the user in the Settings page.
         Project project = psiComment.getProject();
-        config = MarceloPluginConfiguration.getInstance(project);
+        config = MarceloPluginConfiguration.getInstance();
 
         // If the separator setting is turned off, we're done.
         if (!config.ifShowsSeparator_ForBdds) return null;
